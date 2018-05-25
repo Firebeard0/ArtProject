@@ -129,10 +129,12 @@ public class ArtPanel {
 		this.add(sliderPanel);
 
 	}
+	
 	private boolean coinFlip()
 	{
 		return (int) (Math.random() * 2) == 0;
 	}
+	
 	private Polygon createPolygon(int sides)
 	{
 		Polygon currentShape = new Polygon();
@@ -189,64 +191,69 @@ public class ArtPanel {
 		return ellipse;
 	}
 	
+	
 
-	
-	
 	private void setupListeners()
 	{
-		rectangleButton.addActionListener(new ActionListener()
+		edgeSlider.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if(!edgeSlider.getValueIsAdjusting())
 				{
+					currentEdgeCount = edgeSlider.getValue();
+				}
+			}
+		});
+		
+		scaleSlider.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if(!scaleSlider.getValueIsAdjusting())
+				{
+					currentEdgeCount = scaleSlider.getValue();
+				}
+			}
+		});		
+		
+		
+		rectangleButton.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent click)
 			{
 				Rectangle rectange = createRectangle();
 				canvas.addShape(rectange);
 			}
-				});
+		});
+		
 		triangleButton.addActionListener(new ActionListener()
 		{
-	public void actionPerformed(ActionEvent click)
-	{
-		Polygon triangle = createPolygon(3);
-		canvas.addShape(triangle);
-	}
+			public void actionPerformed(ActionEvent click)
+			{
+				Polygon triangle = createPolygon(3);
+				canvas.addShape(triangle);
+			}
 		});
+		
 	     polygonButton.addActionListener(new ActionListener()
 		{
-	public void actionPerformed(ActionEvent click)
-	{
-		Polygon polygon = createPolygon(currentEdgeCount);
-		canvas.addShape(polygon);
-	}
+			public void actionPerformed(ActionEvent click)
+			{
+				Polygon polygon = createPolygon(currentEdgeCount);
+				canvas.addShape(polygon);
+			}
 		});
-			ellipseButton.addActionListener(new ActionListener()
-			{
-		public void actionPerformed(ActionEvent click)
+	     
+		ellipseButton.addActionListener(new ActionListener()
 		{
-			Ellipse2D ellipse = createEllipse();
-			canvas.addShape(ellipse);
-		}
-			});
+			public void actionPerformed(ActionEvent click)
+			{
+				Ellipse2D ellipse = createEllipse();
+				canvas.addShape(ellipse);
+			}
+		});
 	}
-	edgeSlider.addChangeListener(new ChangeListener(){
-		@Override
-		public void stateChanged(ChangeEvent e)
-		{
-			if(!edgeSlider.getValueIsAdjusting())
-			{
-				currentEdgeCount = edgeSlider.getValue();
-			}
-		}
-	});
-	scaleSlider.addChangeListener(new ChangeListener(){
-		@Override
-		public void stateChanged(ChangeEvent e)
-		{
-			if(!scaleSlider.getValueIsAdjusting())
-			{
-				currentEdgeCount = scaleSlider.getValue();
-			}
-		}
-	});
 }
 
 

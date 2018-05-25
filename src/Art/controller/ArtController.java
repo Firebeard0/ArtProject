@@ -15,12 +15,12 @@ public class ArtController {
 	
 	public void start()
 	{
-		JOptionPane.showMessageDialog(appFrame, "Welcome To Art");
+		JOptionPane.showMessageDialog(frame, "Welcome To Art");
 	}
 	
 	public void handleErrors(Exception error)
 	{
-		JOptionPane.showMessageDialog(appFrame, error.getMessage());
+		JOptionPane.showMessageDialog(frame, error.getMessage());
 	}
 	
 	public ArtFrame getFrame()
