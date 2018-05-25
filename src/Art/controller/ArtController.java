@@ -2,7 +2,7 @@ package Art.controller;
 import java.awt.Frame;
 
 import javax.swing.JOptionPane;
-import Art.View.ArtFrame;
+import Art.View.*;
 
 public class ArtController {
 	ArtFrame frame;
